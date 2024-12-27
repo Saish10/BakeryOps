@@ -1,0 +1,62 @@
+django-admin startproject projectname .
+
+python manage.py migrate_schemas --shared
+
+python manage.py load_fixtures
+python manage.py create_tenant_user
+
+python manage.py create_tenant_superuser --email=tenant1@lawsys.com  --schema=tenant1
+
+python manage.py create_tenant_superuser --email=admin@bakeryops.com  --schema=bakeryops
+
+
+
+
+
+
+PROJECT FLOW
+
+PRODUCT OWNER VIEW
+- Dashboard
+- Tenants
+    - list
+    - create
+    - delete
+    - Tenant Branding Options
+
+
+PRODUCT USER VIEW (BAKERS & CUSTOMERS)
+
+Baker/Admin(Tenant) View
+
+- Dashboard
+
+- Orders
+    - Manage Orders
+    - Order History
+    - Payment Details
+
+- Products
+    - Manage Products (Edit, Create & Delete)
+
+- Inventory
+    - Manage Inventory
+
+- Customers
+    Customer List
+    Customer Detail & Edit
+
+- Reports
+
+- Settings
+    - Profile
+    - Branding
+
+Customer View
+- Orders & Order History
+- Payments & Payments History
+
+
+
+
+

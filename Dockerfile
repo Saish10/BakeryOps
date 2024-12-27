@@ -1,22 +1,22 @@
-# Dockerfile
+# Use the official Python 3.13 image as a base
+FROM python:3.13-slim
 
-# Use the official Python image as the base image
-FROM python:3.11-slim
+# Set environment variables for Python
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
-# Set the working directory in the container to /app/src
-WORKDIR /app/src
-
-# Copy the requirements file into the container
-COPY requirements.txt .
+# Set working directory
+WORKDIR /app
 
 # Install dependencies
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project directory to /app/src
-COPY . /app/src/
+# Copy the project files into the container
+COPY . /app/
 
-# Expose the port FastAPI will run on
+# Expose the port that Django will run on
 EXPOSE 8000
 
-# Run the application with Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Set the default command to run the app
+CMD ["./start.sh"]
