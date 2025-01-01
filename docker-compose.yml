@@ -13,12 +13,12 @@ services:
       - postgres_data:/var/lib/postgresql/data  # Persist DB data
     env_file: .env
     # networks:
-    #   - lawsys-network
+    #   - bakeryops-network
 
 
   # Django backend service
   # backend:
-  #   container_name: ls_backend
+  #   container_name: bakeryops_backend
   #   build:
   #     context: .
   #     dockerfile: Dockerfile
@@ -33,36 +33,36 @@ services:
   #   env_file:
   #     - .env  # Load environment variables from .env file
   #   environment:
-  #     DJANGO_SETTINGS_MODULE: "law_sys.configurations.settings"
+  #     DJANGO_SETTINGS_MODULE: "bakeryops.config.settings"
   #   networks:
-  #     - lawsys-network
+  #     - bakeryops-network
 
   # # Redis service for Django Channels and Celery
   # redis:
-  #   container_name: ls_redis
+  #   container_name: bakeryops_redis
   #   image: redis:latest
   #   restart: always
   #   ports:
   #     - "6379:6379"  # Expose port 6379 for Redis
   #   networks:
-  #     - lawsys-network
+  #     - bakeryops-network
 
   # Celery Flower (Optional: For monitoring Celery workers)
   # celery-flower:
   #   container_name: celery_flower
   #   image: mher/flower:latest
-  #   command: ["flower", "--broker=redis://ls_redis:6379/0"]
+  #   command: ["flower", "--broker=redis://bakeryops_redis:6379/0"]
   #   ports:
   #     - "5555:5555"  # Flower UI exposed on port 5555
   #   networks:
-  #     - lawsys-network
+  #     - bakeryops-network
   #   depends_on:
   #     - redis
   #     - backend
 
 # Custom network for all services to communicate
 # networks:
-#   lawsys-network:
+#   bakeryops-network:
 #     external: true  # Use external network (ensure it exists)
 
 # Persistent volume for PostgreSQL data

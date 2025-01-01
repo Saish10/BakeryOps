@@ -101,6 +101,13 @@ class UserAccount(BaseModel, AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True,
     )
+    zip_code = models.CharField(
+        max_length=10,
+        help_text=_("Zip Code"),
+        verbose_name=_("Zip Code"),
+        null=True,
+        blank=True,
+    )
     state = models.ForeignKey(
         "base.State",
         on_delete=models.SET_NULL,

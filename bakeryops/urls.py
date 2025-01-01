@@ -14,6 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+__author__ = "Saish Naik"
+__copyright__ = "Copyright 2024, SN"
+
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
@@ -21,7 +24,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-schema_view = get_schema_view(
+SchemaView = get_schema_view(
     openapi.Info(
         title="Bakery Ops",
         default_version="v1",
@@ -35,10 +38,10 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path(
         "swagger/",
-        schema_view.with_ui("swagger", cache_timeout=0),
+        SchemaView.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
     path(
@@ -46,7 +49,33 @@ urlpatterns = [
         include(("base.urls", "base"), namespace="base"),
     ),
     path(
-        "accounts/",
+        "account/",
         include(("accounts.urls", "accounts"), namespace="accounts"),
+    ),
+    path(
+        "product/",
+        include(("products.urls", "products"), namespace="products"),
+    ),
+    path(
+        "order/",
+        include(("orders.urls", "orders"), namespace="orders"),
+    ),
+    path(
+        "payment/",
+        include(("payments.urls", "payments"), namespace="payments"),
+    ),
+    path(
+        "notification/",
+        include(
+            ("notifications.urls", "notifications"), namespace="notifications"
+        ),
+    ),
+    path(
+        "dashboard/",
+        include(("dashboard.urls", "dashboard"), namespace="dashboard"),
+    ),
+    path(
+        "report/",
+        include(("reports.urls", "reports"), namespace="reports"),
     ),
 ]

@@ -53,7 +53,7 @@ Baker/Admin(Tenant) View
     - Branding
 
 Customer View
-- Orders & Order History
+- Order items & Order History
 - Payments & Payments History
 
 

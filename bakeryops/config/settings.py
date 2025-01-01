@@ -48,6 +48,8 @@ SHARED_APPS = [
     "base",
     "tenants",
     "accounts",
+    "reports",
+    "dashboard",
 ] + THIRD_PARTY_APPS
 
 TENANT_APPS = [
@@ -59,6 +61,10 @@ TENANT_APPS = [
     "django.contrib.staticfiles",
     "rest_framework.authtoken",
     "accounts",
+    "notifications",
+    "products",
+    "orders",
+    "payments",
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
